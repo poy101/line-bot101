@@ -6,7 +6,10 @@ require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 /*
 $access_token = '3ALKAbKFoGuJyJnoDdn0HeyfbxLFtEXBKiC0lFeoNl/XbL4WhoCZzefp2n7UDuXaCWfErIDro07BnZNggJmXJChXTIlMPo8LRJ+n1LEgbRUaKehDkiCr5p5CakHrPX+gauOGX/R5bB2e5yi7xjnHDAdB04t89/1O/w1cDnyilFU=';
 */
-$access_token = 'ZDFKBXmsYLIQiNRf8HylLf7ASlvsmYe2CPyKvZ1KELm/LkDmhxy7nov0lpyDYQokUQyn72z2OXRG1WKaGIUK6DLcvJqqEnieKhmO/r/eNF4/EGRCrfs9ZGq/ytfvd9fNK2ZVt8WALpoWkcShwZuBqAdB04t89/1O/w1cDnyilFU=';
+/*$access_token = 'ZDFKBXmsYLIQiNRf8HylLf7ASlvsmYe2CPyKvZ1KELm/LkDmhxy7nov0lpyDYQokUQyn72z2OXRG1WKaGIUK6DLcvJqqEnieKhmO/r/eNF4/EGRCrfs9ZGq/ytfvd9fNK2ZVt8WALpoWkcShwZuBqAdB04t89/1O/w1cDnyilFU=';
+*/
+$access_token = 'ie0pdSIfgS0zVzy3/KZ9OYUOxaMx0HRTCP0Ke/jIEgZsNcw78854JI6pycjTEOc0qVBfTQozAENSzTFzjlaR2BY5Ts5Pa6kgETU+7j0qe/3pg0/4Jt20fTfROffycr0CrOPdJxdYwuSD6BEm2fQF5QdB04t89/1O/w1cDnyilFU=';
+
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
