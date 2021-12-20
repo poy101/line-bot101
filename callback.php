@@ -30,7 +30,7 @@
                 if (strpos($text, "sms") == 0) {
                     $phone_no = str_replace("sms", "", $text);
                     $txt = $phone_no;
-                   $xurl = "http://www.tmy.or.th/tmymobile/webservice/linebotjsp.jsp?act=lms&_phoneNumber=" . $phone_no;
+                    $xurl = "http://www.tmy.or.th/tmymobile/webservice/linebotjsp.jsp?act=lms&_phoneNumber=" . $phone_no;
                     $curl = curl_init();
                     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
                     curl_setopt($curl, CURLOPT_URL, $xurl);
@@ -75,7 +75,7 @@
 
             $response = curl_exec($curl);
             $err = curl_error($curl);
-
+error_log($err);
             curl_close($curl);
 
             if ($err) {
