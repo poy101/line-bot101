@@ -19,7 +19,7 @@
 
 	$messages = [];
 	$messages['replyToken'] = $replyToken;
-	$messages['messages'][0] = getFormatTextMessage("เอ้ย ถามอะไรก็ตอบได้");
+	$messages['messages'][0] = getFormatTextMessage(getInfo($text));
 
 	$encodeJson = json_encode($messages);
 
@@ -30,6 +30,14 @@
 
 	/*Return HTTP Request 200*/
 	http_response_code(200);
+        
+        function getInfo($text){
+            $txt = "";
+            if($text!=""){
+                $txt = "เอ้ย ถามอะไรก็ตอบได้";
+            }
+            return $txt;
+        }
 
 	function getFormatTextMessage($text)
 	{
