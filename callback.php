@@ -25,26 +25,47 @@
             $LINEDatas['token'] = "ie0pdSIfgS0zVzy3/KZ9OYUOxaMx0HRTCP0Ke/jIEgZsNcw78854JI6pycjTEOc0qVBfTQozAENSzTFzjlaR2BY5Ts5Pa6kgETU+7j0qe/3pg0/4Jt20fTfROffycr0CrOPdJxdYwuSD6BEm2fQF5QdB04t89/1O/w1cDnyilFU=";
 
             $txt = "";
-            if ($text != "") {
+            
+                     $messages['messages'][0] = getFormatTextMessage($userId);
+                                $encodeJson = json_encode($messages);
+                                return sentMessage($encodeJson, $LINEDatas);
+            /*if ($text != "") {
                 $text = trim($text);
                 if (strpos($text, "sms") == 0) {
                     $phone_no = str_replace("sms", "", $text);
-                    $txt = $phone_no;
-                    $xurl = "http://www.tmy.or.th/tmymobile/webservice/linebotjsp.jsp?act=lms&_phoneNumber=" . $phone_no;
-                    $curl = curl_init();
-                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($curl, CURLOPT_URL, $xurl);
-                    $res = curl_exec($curl);
-                    curl_close($curl);
-                    $jo = json_decode($res);
-                    $txt = $jo->MEM_ID;
-                    $messages['messages'][0] = getFormatTextMessage($txt);
-                    $encodeJson = json_encode($messages);
-                    return sentMessage($encodeJson, $LINEDatas);
+                    if ($phone_no != "") {
+                        $phone_no = preg_replace("/\D/", "", $phone_no);
+                        if ($phone_no != "") {
+                            $xphone = substr($phone_no, 0, 1);
+                            if (strlen($phone_no) == 10 && is_numeric($xphone)) {
+                                //echo($phone_no);
+                                $txt = $phone_no;
+                                $xurl = "http://www.tmy.or.th/tmymobile/webservice/linebotjsp.jsp?act=lms&_phoneNumber=" . $phone_no;
+                                $curl = curl_init();
+                                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                                curl_setopt($curl, CURLOPT_URL, $xurl);
+                                $res = curl_exec($curl);
+                                curl_close($curl);
+                                $jo = json_decode($res);
+                                $txt = $jo->MEM_ID;
+                                $err = $jo->err;
+                                if ($err == "101") {
+                                    $txt = "ไม่พบข้อมูลในระบบ...โปรดทำการสมัครข้อใช้บริการแอพพลิเคชั่น(TMY)";
+                                } else if ($err == "102") {
+                                    $txt = "ท่านหมดสมาชิกภาพไปแล้ว...ไม่สามารถดำเนินการได้";
+                                } else if ($err == "103") {
+                                    $txt = "โปรดรอการอนุมัติการใช้งานแอพพลิเคชั่น(TMY)จากสหกรณ์";
+                                } else if ($err == "104") {
+                                    $txt = "ไม่สามารถบันทึกรายการได้โปรดรอสักพักแล้วทดลองทำรายการใหม่อีกรอบ";
+                                }
+                                $messages['messages'][0] = getFormatTextMessage($txt);
+                                $encodeJson = json_encode($messages);
+                                return sentMessage($encodeJson, $LINEDatas);
+                            }
+                        }
+                    }
                 }
-            }
-
-           
+            }*/
         }
 
         function getFormatTextMessage($text) {
@@ -75,7 +96,7 @@
 
             $response = curl_exec($curl);
             $err = curl_error($curl);
-error_log($err);
+            error_log($err);
             curl_close($curl);
 
             if ($err) {
