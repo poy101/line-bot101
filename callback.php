@@ -29,15 +29,15 @@
                 $text = trim($text);
                 if (strpos($text, "sms") == 0) {
                     $phone_no = str_replace("sms", "", $text);
-                    // $txt = $phone_no;
-                    $xurl = "http://www.tmy.or.th/tmymobile/webservice/linebotjsp.jsp?act=lms&_phoneNumber=" . $phone_no;
+                    $txt = $phone_no;
+                  /*  $xurl = "http://www.tmy.or.th/tmymobile/webservice/linebotjsp.jsp?act=lms&_phoneNumber=" . $phone_no;
                     $curl = curl_init();
                     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
                     curl_setopt($curl, CURLOPT_URL, $xurl);
                     $res = curl_exec($curl);
                     curl_close($curl);
                     $jo = json_decode($res);
-                    $txt = $jo->MEM_ID;
+                    $txt = $jo->MEM_ID;*/
                     $messages['messages'][0] = getFormatTextMessage($txt);
                     $encodeJson = json_encode($messages);
                     return sentMessage($encodeJson, $LINEDatas);
