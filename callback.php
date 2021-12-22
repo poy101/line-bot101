@@ -10,10 +10,14 @@
         $datas = file_get_contents('php://input');
         /* Decode Json From LINE Data Body */
         $deCode = json_decode($datas, true);
-        file_put_contents('log.txt', file_get_contents('php://input') . PHP_EOL, FILE_APPEND);
+          file_put_contents('log.txt', file_get_contents('php://input') . PHP_EOL, FILE_APPEND);
+        /*  $deCode['events'][0]['replyToken'] = 'xxxxx';
+          $deCode['events'][0]['source']['userId'] = 'Ue7e6b540a37932bb1958e52e573f600b';
+          $deCode['events'][0]['message']['text']='sms1234567890'; */
         $results = getInfo($deCode);
         /* Return HTTP Request 200 */
-        http_response_code(200);
+
+        //  http_response_code(200);
 
         function getInfo($deCode) {
             $replyToken = $deCode['events'][0]['replyToken'];
@@ -25,11 +29,8 @@
             $LINEDatas['token'] = "ie0pdSIfgS0zVzy3/KZ9OYUOxaMx0HRTCP0Ke/jIEgZsNcw78854JI6pycjTEOc0qVBfTQozAENSzTFzjlaR2BY5Ts5Pa6kgETU+7j0qe/3pg0/4Jt20fTfROffycr0CrOPdJxdYwuSD6BEm2fQF5QdB04t89/1O/w1cDnyilFU=";
 
             $txt = "";
-            
-                     $messages['messages'][0] = getFormatTextMessage($userId);
-                                $encodeJson = json_encode($messages);
-                                return sentMessage($encodeJson, $LINEDatas);
-            /*if ($text != "") {
+
+            if ($text != "" && $userId != "") {
                 $text = trim($text);
                 if (strpos($text, "sms") == 0) {
                     $phone_no = str_replace("sms", "", $text);
@@ -40,7 +41,8 @@
                             if (strlen($phone_no) == 10 && is_numeric($xphone)) {
                                 //echo($phone_no);
                                 $txt = $phone_no;
-                                $xurl = "http://www.tmy.or.th/tmymobile/webservice/linebotjsp.jsp?act=lms&_phoneNumber=" . $phone_no;
+                                $xurl = "http://www.tmy.or.th/tmymobile/webservice/linebotjsp.jsp?act=lms&_phoneNumber=" . $phone_no . "&line_id=" . $userId;
+                                // $xurl = "http://localhost:8080/tmymobile/webservice/linebotjsp.jsp?act=lms&_phoneNumber=" . $phone_no . "&line_id=" . $userId;
                                 $curl = curl_init();
                                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
                                 curl_setopt($curl, CURLOPT_URL, $xurl);
@@ -65,7 +67,7 @@
                         }
                     }
                 }
-            }*/
+            }
         }
 
         function getFormatTextMessage($text) {
@@ -98,7 +100,6 @@
             $err = curl_error($curl);
             error_log($err);
             curl_close($curl);
-
             if ($err) {
                 $datasReturn['result'] = 'E';
                 $datasReturn['message'] = $err;
@@ -111,7 +112,6 @@
                     $datasReturn['message'] = $response;
                 }
             }
-
             return $datasReturn;
         }
         ?>
