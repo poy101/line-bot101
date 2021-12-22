@@ -29,7 +29,6 @@
             $LINEDatas['token'] = "ie0pdSIfgS0zVzy3/KZ9OYUOxaMx0HRTCP0Ke/jIEgZsNcw78854JI6pycjTEOc0qVBfTQozAENSzTFzjlaR2BY5Ts5Pa6kgETU+7j0qe/3pg0/4Jt20fTfROffycr0CrOPdJxdYwuSD6BEm2fQF5QdB04t89/1O/w1cDnyilFU=";
 
             $txt = "";
-
             if ($text != "" && $userId != "") {
                 $text = trim($text);
                 if (strpos($text, "sms") == 0) {
@@ -59,6 +58,8 @@
                                     $txt = "โปรดรอการอนุมัติการใช้งานแอพพลิเคชั่น(TMY)จากสหกรณ์";
                                 } else if ($err == "104") {
                                     $txt = "ไม่สามารถบันทึกรายการได้โปรดรอสักพักแล้วทดลองทำรายการใหม่อีกรอบ";
+                                }else if($txt!=""){
+                                    $txt="ระบบทำการบันทึกข้อมูลเรียบร้อยแล้ว เมื่อมีข่าวสารใดๆทางเราจะแจ้งโดยผ่านไลน์ที่ท่านได้สมัครนี้";
                                 }
                                 $messages['messages'][0] = getFormatTextMessage($txt);
                                 $encodeJson = json_encode($messages);
