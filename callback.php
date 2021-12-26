@@ -26,8 +26,8 @@
             $messages = [];
             $messages['replyToken'] = $replyToken;
             $LINEDatas['url'] = "https://api.line.me/v2/bot/message/reply";
-            $LINEDatas['token'] = "ie0pdSIfgS0zVzy3/KZ9OYUOxaMx0HRTCP0Ke/jIEgZsNcw78854JI6pycjTEOc0qVBfTQozAENSzTFzjlaR2BY5Ts5Pa6kgETU+7j0qe/3pg0/4Jt20fTfROffycr0CrOPdJxdYwuSD6BEm2fQF5QdB04t89/1O/w1cDnyilFU=";
-
+           // $LINEDatas['token'] = "ie0pdSIfgS0zVzy3/KZ9OYUOxaMx0HRTCP0Ke/jIEgZsNcw78854JI6pycjTEOc0qVBfTQozAENSzTFzjlaR2BY5Ts5Pa6kgETU+7j0qe/3pg0/4Jt20fTfROffycr0CrOPdJxdYwuSD6BEm2fQF5QdB04t89/1O/w1cDnyilFU=";
+            $LINEDatas['token'] = "6D0s5ujSHiYdoCIUBfuqfilECGY3lmgGni1JNf+Me8b02MDuPwShOXBKoaSsicfrUQyn72z2OXRG1WKaGIUK6DLcvJqqEnieKhmO/r/eNF6C4VxM4UMt2tdKGWH5SKWc0H5G7ffe16WxMcRPwEaYlQdB04t89/1O/w1cDnyilFU=";
             $txt = "";
             if ($text != "" && $userId != "") {
                 $text = trim($text);
